@@ -8,6 +8,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keybinder/keybinder.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:saber/components/app_launcher/app_launcher_dialog.dart';
 import 'package:saber/components/theming/adaptive_icon.dart';
 import 'package:saber/components/theming/dynamic_material_app.dart';
 import 'package:saber/components/theming/uni_icon.dart';
@@ -548,6 +549,13 @@ class _ToolbarState extends State<Toolbar> {
                   cupertinoIcon: CupertinoIcons.share,
                 ),
               ),
+              if (Platform.isAndroid)
+                ToolbarIconButton(
+                  tooltip: 'Launch app',
+                  onPressed: () => showAppLauncherDialog(context),
+                  padding: buttonPadding,
+                  child: const Icon(Icons.rocket_launch),
+                ),
             ],
           ),
         ),
